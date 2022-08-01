@@ -19,7 +19,7 @@ Now fill in `config.json` with your domain (without 'www' or 'http/https'!)Bot's
     "domain": "your.domain",
     "token": "DISCORD_TOKEN",
     "prefix": "CUSTOM_PREFIX",
-    "userRoleID": "USER_ROLE_ID",
+    "userRoleID": "USER_ROLE_ID"
 }
 ```
 
