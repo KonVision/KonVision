@@ -152,7 +152,7 @@ client.on('message', msg => {
         const exampleEmbed = new MessageEmbed()
           .setTitle('Embeds look like this!')
           .setDescription('And can have a description!')
-          .setAuthor({ text: 'As well as an author field!' })
+          .setAuthor( 'As well as an author field!' )
           .setImage('https://i.imgur.com/RJVEcru.png');
 
         msg.reply({ content: '**Configuration:** \n\nDo you want to use embeds?', embeds: [ exampleEmbed ], components: [row] });
@@ -363,7 +363,7 @@ client.on('message', msg => {
         .setTitle(userConfig.title)
         .setDescription(userConfig.description)
         .setImage(msg.author.displayAvatarURL())
-        .setAuthor({ text: userConfig.author })
+        .setAuthor( userConfig.author )
       msg.reply({ content: "This is your current embed:", embeds: [ previewEmbed ] });
     } else {
       msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
@@ -414,7 +414,7 @@ client.on('message', msg => {
       .setDescription("Commands to set up your account and change it's settings.")
       .addFields(
         { name: `${prefix}register`, value: `Registers you as a user. Only works if you have the <@&${userRoleID}> role.`, inline: true },
-        { name: `${prefix}newSecret`, value: 'Generates a new upload secret and sends it to you.', inline: true },
+        { name: `${prefix}newSecret`, value: 'Generates a new upload secret and sends it to you..', inline: true },
         { name: `${prefix}wipe`, value: 'Wipes all your images and database entries.', inline: true },
         { name: `${prefix}getConfigs`, value: 'Gets the config files for [ShareX](https://getsharex.com) or [ShareNix](https://github.com/Francesco149/sharenix).', inline: true }
       )
