@@ -414,7 +414,7 @@ client.on('message', msg => {
       .setDescription("Commands to set up your account and change it's settings.")
       .addFields(
         { name: `${prefix}register`, value: `Registers you as a user. Only works if you have the <@&${userRoleID}> role.`, inline: true },
-        { name: `${prefix}newSecret`, value: 'Generates a new upload secret and sends it to you..', inline: true },
+        { name: `${prefix}newSecret`, value: 'Generates a new upload secret and sends it to you.', inline: true },
         { name: `${prefix}wipe`, value: 'Wipes all your images and database entries.', inline: true },
         { name: `${prefix}getConfigs`, value: 'Gets the config files for [ShareX](https://getsharex.com) or [ShareNix](https://github.com/Francesco149/sharenix).', inline: true }
       )
