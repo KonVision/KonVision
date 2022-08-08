@@ -24,7 +24,7 @@ Now fill in `config.json` with your domain (without 'www' or 'http/https'!)Bot's
 ```
 
 ### Install dependencies
-In this example, we are using [yarn](https://yarnpkg.com/) as our package manager. Feel free to use any other package manager and to install [`discord.js@13.9.1`](https://www.npmjs.com/package/discord.js/v/13.9.1) with it.
+In this example, we are using [yarn](https://yarnpkg.com/) as our package manager. Feel free to use any other package manager and to install [`discord.js@13.9.1`](https://www.npmjs.com/package/discord.js/v/13.9.1) and [`chokidar`](https://www.npmjs.com/package/chokidar) with it.
 
 ```bash
 yarn install
@@ -38,4 +38,5 @@ node index.js
     <summary>Installing without lockfile</summary>
     <p> If you want to create a new lockfile / set up a new project, you can use the following command to add the required packages: </p>
     <code>yarn add discord.js@13.9.1</code>
+    <code>yarn add chokidar</code>
 </details>
