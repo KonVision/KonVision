@@ -38,5 +38,6 @@ node index.js
     <summary>Installing without lockfile</summary>
     <p> If you want to create a new lockfile / set up a new project, you can use the following command to add the required packages: </p>
     <code>yarn add discord.js@13.9.1</code>
+    <br>
     <code>yarn add chokidar</code>
 </details>
