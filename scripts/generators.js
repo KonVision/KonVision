@@ -23,7 +23,7 @@ function generatePHP(key) {
                     $uploadhost = "${domain}";
                     $redirect = "https://${domain}";
                     if ($_SERVER["REQUEST_URI"] == "/robot.txt") {
-                        die("User-agent: *\nDisallow: /");
+                        die("User-agent: *\\nDisallow: /");
                     }
                     if (isset($_POST['k'])) {
                         if ($_POST['k'] == $key) {
