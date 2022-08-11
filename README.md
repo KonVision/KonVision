@@ -30,10 +30,6 @@ In this example, we are using [yarn](https://yarnpkg.com/) as our package manage
 yarn install
 ```
 
-```js
-node index.js
-```
-
 <details>
     <summary>Installing without lockfile</summary>
     <p> If you want to create a new lockfile / set up a new project, you can use the following command to add the required packages: </p>
@@ -41,3 +37,9 @@ node index.js
     <br>
     <code>yarn add chokidar</code>
 </details>
+
+### Run the project 
+
+```bash
+node index.js
+```
