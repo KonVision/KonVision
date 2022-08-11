@@ -18,6 +18,13 @@ function postProc(filename) {
     let newfile = end[1] + '.' + end[2];    
 
     fs.mkdirSync(`/var/www/${domain}/users/` + user + '/' + end[1]);
+    
+    fs.chmod(path.join(__dirname, `/var/www/${domain}/users/` + user + '/' + end[1]), '755', (err => {
+        if (err) {
+            return console.error(err);
+        }
+    }));  
+
 
     fs.rename(`/var/www/${domain}/upload/end/` + postproc.replace('/','') , `/var/www/${domain}/users/` + user + '/' + end[1] + '/' + newfile , (end) => {
 	    console.log("moved")
