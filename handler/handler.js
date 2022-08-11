@@ -2,6 +2,7 @@
 const { domain } = require('./../config.json');
 const chokidar = require('chokidar');
 const fs = require('fs');
+const path = require('path');
 
 
 /* Call watcher */
