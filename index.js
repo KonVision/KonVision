@@ -547,6 +547,7 @@ client.on('interactionCreate', async interaction => {
     await interaction.member.user.send({
       files: [ `./scripts/cache/${name}config.sxcu` ]
     });
+    await interaction.deferUpdate();
 
     fs.rmSync(path.join(__dirname, `./scripts/cache/${name}config.sxcu`), { recursive: true, force: true });
   }
@@ -584,6 +585,7 @@ client.on('interactionCreate', async interaction => {
     await interaction.member.user.send({
       files: [ `./scripts/cache/${name}config.json` ]
     });
+    await interaction.deferUpdate()
 
     fs.rm(path.join(__dirname, `./scripts/cache/${name}config.json`), { recursive: true, force: true });
   }
