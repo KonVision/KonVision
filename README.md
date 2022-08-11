@@ -12,7 +12,7 @@ For the Discord bot, you need to have a Bot Application and its token.
 
 Create a 'User' role in your Discord Server and get its ID. This role can be given to members who are allowed to use the image host. If a member doesn't have the role he can't use it.
 
-Now fill in `config.json` with your domain (without 'www' or 'http/https'!)Bot's token, a custom prefix and the ID of the role.
+Now fill in `config.json` with your domain **(without `www` or `http/https`)**, your Discord Bot token, a custom prefix and the ID of the role.
 
 ```json
 {
