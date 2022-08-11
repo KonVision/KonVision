@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "chokidar": "^3.5.3",
     "discord.js": "13.9.1"
   }
 }
