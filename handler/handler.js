@@ -38,7 +38,7 @@ function postProc(filename) {
     const authorJSON = {
         "type":"link",
         "version":"1.0",
-        "author_name": author,
+        "author_name": author.name,
     }
     
     const authorConfigPath = `../users/${user}/author.json`;
