@@ -1,4 +1,5 @@
 /* Importing packages and variables */
+const { domain } = require('./../config.json');
 const chokidar = require('chokidar');
 const fs = require('fs');
 
