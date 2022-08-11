@@ -62,6 +62,11 @@ client.on('messageCreate', msg => {
                     return;
                 }
             })
+            fs.chmod(path.join(__dirname, mkdirPath), '755', (err => {
+                if (err) {
+                    return console.error(err);
+                }
+            }));
 
             const responseEmbed  = new MessageEmbed()
               .setColor(success)
@@ -107,6 +112,11 @@ client.on('messageCreate', msg => {
           return;
         }
       })
+      fs.chmod(path.join(__dirname, mkdirPath), '755', (err => {
+          if (err) {
+              return console.error(err);
+          }
+      }));
   
       const responseEmbed  = new MessageEmbed()
         .setColor(warning)
