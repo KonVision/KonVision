@@ -2,7 +2,7 @@
 
 ## Setup & Installation
 
-You need [Node.js](https://nodejs.org/en/) and a package manager such as [Yarn](https://yarnpkg.com/) or [NPM](https://www.npmjs.com/).
+You need [Node.js](https://nodejs.org/en/) and a package manager such as [yarn](https://yarnpkg.com/) or [NPM](https://www.npmjs.com/).
 
 ### Information
 When hosting, only make the `./users/*` directory public!
