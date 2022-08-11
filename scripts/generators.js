@@ -35,7 +35,7 @@ function generatePHP(key) {
                                     if ($json['embed']) {
                                         echo $uploadhost . "/users/" . $_POST['n'] . '/' . $md5 . "/" . $md5 . '.html';
                                     } else {
-                                        echo $uploadhost . $_POST['n'] . '/' . $md5 . "/" . $md5 . '.png';
+                                        echo $uploadhost . "/users/" . $_POST['n'] . '/' . $md5 . "/" . $md5 . '.png';
                                     }
                                 } else {
                                     echo "Your file could not be uploaded!";
