@@ -33,7 +33,7 @@ function generatePHP(key) {
                                     $explode = explode(".", $_FILES["d"]["name"]);
                                     rename(getcwd() . "/" . basename($_FILES['d']['name']), "/var/www/${domain}/upload/end/" . $_POST['n'] . "." . $md5 . "." . end($explode));
                                     if ($json['embed']) {
-                                        echo $uploadhost . $_POST['n'] . '/' . $md5 . "/" . $md5 . '.html';
+                                        echo $uploadhost . "/users/" . $_POST['n'] . '/' . $md5 . "/" . $md5 . '.html';
                                     } else {
                                         echo $uploadhost . $_POST['n'] . '/' . $md5 . "/" . $md5 . '.png';
                                     }
