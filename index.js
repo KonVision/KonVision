@@ -23,7 +23,7 @@ client.once('ready', () => {
 });
 
 
-client.on('message', msg => { 
+client.on('messageCreate', msg => { 
   if (msg.author.bot) {
     return
   }
@@ -47,6 +47,11 @@ client.on('message', msg => {
             api.saveUploadSecret(name, uploadsecret);
 
             fs.mkdir(path.join(__dirname, mkdirPath), (err => {
+                if (err) {
+                    return console.error(err);
+                }
+            }));
+            fs.chmod(path.join(__dirname, mkdirPath), '755', (err => {
                 if (err) {
                     return console.error(err);
                 }
@@ -90,6 +95,11 @@ client.on('message', msg => {
         if (err) {
           return console.error(err);
         }
+      }));
+      fs.chmod(path.join(__dirname, mkdirPath), '755', (err => {
+          if (err) {
+              return console.error(err);
+          }
       }));
       fs.writeFileSync(path.join(__dirname, writeFilePath), content, err => {
         if (err) {
@@ -152,7 +162,7 @@ client.on('message', msg => {
         const exampleEmbed = new MessageEmbed()
           .setTitle('Embeds look like this!')
           .setDescription('And can have a description!')
-          .setAuthor( 'As well as an author field!' )
+          .setAuthor( { name: 'As well as an author field!', iconURL: msg.author.displayAvatarURL() } )
           .setImage('https://i.imgur.com/RJVEcru.png');
 
         msg.reply({ content: '**Configuration:** \n\nDo you want to use embeds?', embeds: [ exampleEmbed ], components: [row] });
@@ -166,7 +176,7 @@ client.on('message', msg => {
   }
 
   /* Embeds on/off commands */
-  if (msg.content.startsWith(prefix + "embedsOn") || msg.content.startsWith(prefix + "embedson")) {
+  if (msg.content.startsWith(prefix + "embedsOn") || msg.content.startsWith(prefix + "embedson") || msg.content.startsWith(prefix + "enableEmbeds") || msg.content.startsWith(prefix + "enableembeds")) {
     const userConfigPath = `./users/${msg.author.id}/config.json`;
     if (fs.existsSync(path.join(__dirname, userConfigPath))) {
       const userConfig = JSON.parse(fs.readFileSync(userConfigPath));
@@ -192,7 +202,7 @@ client.on('message', msg => {
     }
   }
   
-  if (msg.content.startsWith(prefix + "embedsOff") || msg.content.startsWith(prefix + "embedsoff")) {
+  if (msg.content.startsWith(prefix + "embedsOff") || msg.content.startsWith(prefix + "embedsoff") || msg.content.startsWith(prefix + "disableEmbeds") || msg.content.startsWith(prefix + "disableembeds")) {
     const userConfigPath = `./users/${msg.author.id}/config.json`;
     if (fs.existsSync(path.join(__dirname, userConfigPath))) {
       const userConfig = JSON.parse(fs.readFileSync(userConfigPath));
@@ -306,20 +316,23 @@ client.on('message', msg => {
         const commandLength = prefix.length + "setauthor".length + 1;
         if (!messageContent.slice(commandLength).length < 200) {
           if (!messageContent.slice(commandLength) == " ") {
-            userConfig.author = messageContent.slice(commandLength);
+            userConfig.author =  {
+              name: messageContent.slice(commandLength),
+              iconURL: msg.author.displayAvatarURL()
+            };
             fs.rmSync(path.join(__dirname, `./users/${msg.author.id}/config.json`), { recursive: true, force: true });
             fs.writeFileSync(path.join(__dirname, `./users/${msg.author.id}/config.json`), JSON.stringify(userConfig));
 
             const responseEmbed  = new MessageEmbed()
               .setColor(success)
               .setTitle("Author Settings")
-              .setDescription(`Your author text has been set to: \n\n\`${userConfig.author}\` \n\n If you want to disable author, use \`${prefix}disableAuthor\`.`)
+              .setDescription(`Your author text has been set to: \n\n\`${userConfig.author.name}\` \n\n If you want to disable author, use \`${prefix}authorOff\`.`)
             msg.reply({ embeds: [ responseEmbed ] });
           } else {
             const responseEmbed  = new MessageEmbed()
               .setColor(error)
               .setTitle("Author Settings")
-              .setDescription(`Please enter a author text. \nCommand Syntax: \`${prefix}setTitle <Title>\``)
+              .setDescription(`Please enter an author text. \nCommand Syntax: \`${prefix}setTitle <Title>\``)
             msg.reply({ embeds: [ responseEmbed ] });
           }
         } else {
@@ -333,7 +346,7 @@ client.on('message', msg => {
     }
   }
 
-  if (msg.content.startsWith(prefix + "disableAuthor") || msg.content.startsWith(prefix + "disableauthor")) {
+  if (msg.content.startsWith(prefix + "authorOff") || msg.content.startsWith(prefix + "authoroff") || msg.content.startsWith(prefix + "disableAuthor") || msg.content.startsWith(prefix + "disableauthor") ) {
     const userConfigPath = `./users/${msg.author.id}/config.json`;
     if (fs.existsSync(path.join(__dirname, userConfigPath))) {
       const userConfig = JSON.parse(fs.readFileSync(userConfigPath));
@@ -363,7 +376,7 @@ client.on('message', msg => {
         .setTitle(userConfig.title)
         .setDescription(userConfig.description)
         .setImage(msg.author.displayAvatarURL())
-        .setAuthor( userConfig.author )
+        .setAuthor( { name: userConfig.author.name, iconURL: msg.author.displayAvatarURL() } )
       msg.reply({ content: "This is your current embed:", embeds: [ previewEmbed ] });
     } else {
       msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
@@ -430,7 +443,7 @@ client.on('message', msg => {
         { name: `${prefix}setTitle \`<Title>\``, value: 'Sets your embed title. Only works if you have embeds enabled.', inline: true },
         { name: `${prefix}setDescription \`<Description>\``, value: 'Sets your embed description. Only works if you have embeds enabled.', inline: true },
         { name: `${prefix}setAuthor \`<Author Text>\``, value: 'Sets your author text. Only works if you have embeds enabled.', inline: true },
-        { name: `${prefix}disableAuthor`, value: 'Disables your author field. Only works if you have embeds enabled.', inline: true },
+        { name: `${prefix}authorOff`, value: 'Disables your author field. Only works if you have embeds enabled.', inline: true },
         { name: `${prefix}preview`, value: 'Shows you a preview of your current embed.', inline: true }
       )
 
@@ -492,11 +505,17 @@ client.on('interactionCreate', async interaction => {
 
 
   /* ShareX button */
-  if(interaction.customId === 'ShareX') {
+  if (interaction.customId === 'ShareX') {
     let name = interaction.member.user.id;
     
     const userUploadSecret = api.getUploadSecret(name);
     cfggen.ShareXGenerator(name, userUploadSecret);
+
+    fs.chmod(path.join(__dirname, `./scripts/cache`), '755', (err => {
+        if (err) {
+            return console.error(err);
+        }
+    }));
 
     const shareXEmbed = new MessageEmbed()
       .setColor(success)
@@ -516,18 +535,24 @@ client.on('interactionCreate', async interaction => {
       components: [ row ],
     });
     await interaction.member.user.send({
-      files: [ `./scripts/cache/${name}config.json` ]
+      files: [ `./scripts/cache/${name}config.sxcu` ]
     });
 
-    fs.rmSync(path.join(__dirname, `./scripts/cache/${name}config.json`), { recursive: true, force: true });
+    fs.rmSync(path.join(__dirname, `./scripts/cache/${name}config.sxcu`), { recursive: true, force: true });
   }
 
   /* ShareNix button */
-  if(interaction.customId === 'ShareNix') {
+  if (interaction.customId === 'ShareNix') {
     let name = interaction.member.user.id;
     
     const userUploadSecret = api.getUploadSecret(name);
     cfggen.ShareNixGenerator(name, userUploadSecret);
+    
+    fs.chmod(path.join(__dirname, `./scripts/cache`), '755', (err => {
+        if (err) {
+            return console.error(err);
+        }
+    }));
 
     const shareNixEmbed = new MessageEmbed()
       .setColor(success)
