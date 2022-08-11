@@ -13,7 +13,8 @@ function ShareXGenerator(user_id, uploadsecret) {
         "RequestURL": uploaddomain,
         "Body": "MultipartFormData",
         "Arguments": {
-          "k": uploadsecret
+            "k": uploadsecret,
+            "n": user_id
         },
         "FileFormName": "d"
     };
@@ -30,7 +31,8 @@ function ShareNixGenerator(user_id, uploadsecret) {
         "RequestURL": uploaddomain,
         "Body": "MultipartFormData",
         "Arguments": {
-        "key": uploadsecret
+            "k": uploadsecret,
+            "n": user_id
         },
         "FileFormName": "file",
         "URL": "$json:url$"
