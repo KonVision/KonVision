@@ -1,6 +1,6 @@
 # ✨ KonVision - Image Host Bot
 
-Open-source image host interfaced via Discord Bot. It features Customizable embeds, config generators, and many more features!
+Open-source image host interfaced via a Discord Bot. It features Customizable embeds, config generators, and many more features!
 
 
 ## Table of contents
