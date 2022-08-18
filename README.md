@@ -68,6 +68,27 @@ You will need to create a directory called ```/var/www/YOUR.HOST/``` which will 
 
 After installing all neccesary services and after creating the 2 file paths, you can create the nginx config files which are located in ```/etc/nginx/sites-enabled```.  
 
+```json
+{
+    server {
+        root /var/www/api.YOUR.DOMAIN;  
+        index index.php;
+        server_name api.flows.host;
+        location / { try_files $uri $uri/ /index.php?$query_string; }
+
+        location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+
+    }
+
+    location ~ /\.ht {
+    deny all;}
+
+    #
+    #MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
+    #
+```
 
 ### IP configuration
 If you are using a third party DNS make sure you create 2 records, the main A record that points to your website to host your frontend (not included in this repo) and a A record that hosts this api. both records point to the same IP adress but the api endpoints DNS needs to be a api.YOUR.DOMAIN subdomain.  
