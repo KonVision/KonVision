@@ -1,4 +1,28 @@
-# KonVision - Image Host Bot
+# ✨ KonVision - Image Host Bot
+
+Open-source image host interfaced via Discord Bot. It features Customizable embeds, config generators, and many more features!
+
+
+## Table of contents
+
+- [✨ KonVision - Image Host Bot](#-konvision---image-host-bot)
+  - [Setup & Installation](#setup--installation)
+    - [Information](#information)
+    - [Configuration](#configuration)
+    - [Install dependencies](#install-dependencies)
+    - [Run the project](#run-the-project)
+  - [Server-side Setup & Troubleshooting](#server-side-setup--troubleshooting)
+    - [Disclaimer](#disclaimer)
+    - [Services required](#services-required)
+    - [Uploading](#uploading)
+    - [NGINX Configuration files](#nginx-configuration-files)
+    - [Integrity checks](#integrity-checks)
+    - [IP configuration](#ip-configuration)
+    - [Launching the router and discord bot.](#launching-the-router-and-discord-bot)
+  - [Other](#other)
+    - [License](#license)
+    - [Contribution](#contribution)
+
 
 ## Setup & Installation
 
@@ -157,3 +181,6 @@ Your API should be running now!
 
 This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/KonVision/OpenBot/blob/main/LICENSE).
 
+### Contribution
+
+All contributions (Issues, Pull Requests etc.) are welcome.
