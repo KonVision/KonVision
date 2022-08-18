@@ -68,7 +68,8 @@ You will need to create a directory called ```/var/www/YOUR.HOST/``` which will 
 
 After installing all neccesary services and after creating the 2 file paths, you can create the nginx config files which are located in ```/etc/nginx/sites-enabled```.  
 
-```server {
+```
+server {
         root /var/www/api.YOUR.DOMAIN;  
         index index.php;
         server_name api.flows.host;
