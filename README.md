@@ -3,7 +3,7 @@
 Open-source image host interfaced via a Discord Bot. It features Customizable embeds, config generators, and many more features!
 
 
-## Table of contents
+## ❯ Table of contents
 
 - [Setup & Installation](#setup--installation)
   - [Information](#information)
@@ -23,7 +23,7 @@ Open-source image host interfaced via a Discord Bot. It features Customizable em
   - [Contribution](#contribution)
 
 
-## Setup & Installation
+## ❯ Setup & Installation
 
 You need [Node.js](https://nodejs.org/en/) and a package manager such as [yarn](https://yarnpkg.com/) or [NPM](https://www.npmjs.com/).
 
@@ -68,7 +68,7 @@ node index.js
 ```
 
 
-## Server-side Setup & Troubleshooting
+## ❯ Server-side Setup & Troubleshooting
 
 ### Disclaimer
 This code has been designed and written to run on an Ubuntu Server (Ubuntu server LTS 20.04.4). To avoid unnecessary bugs, do not attempt to set this up on a Windows server or home pc because the chances are high, that it will not work.
@@ -174,7 +174,7 @@ screen sudo -u www-data node /var/www/api.YOUR.DOMAIN/index.js
 Your API should be running now!
 
 
-## Other
+## ❯ Other
 
 ### License
 
