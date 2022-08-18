@@ -45,8 +45,8 @@ node index.js
 ```
 ## Server side Setup and Troubleshooting
 
-#Disclaimer
+### Disclaimer
 This code has been designed and written to run un a Ubuntu Server (Ubuntu server LTS 20.04.4). To avoid unneccesary bugs, do not attempt to set this up on a windows server or home pc because the chances are high, that it will not work.
 
-#Backend
+### Backend
 
