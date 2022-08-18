@@ -61,6 +61,17 @@ This code has been designed and written to run un a Ubuntu Server (Ubuntu server
 
 ### Uploading  
 After editing all neccessary config files, you can upload the code to your server.  
-You will need to create a directory called ```/var/www/api.YOURHOST/``` and place the file structure in it.  
+You will need to create a directory called ```/var/www/api.YOUR.HOST/``` and place the file structure in it.   
+You will need to create a directory called ```/var/www/YOUR.HOST/``` which will host your main homepage.  
+
+### NGINX Configuration files
+
+After installing all neccesary services and after creating the 2 file paths, you can create the nginx config files which are located in ```/etc/nginx/sites-enabled```.  
+
+
+### IP configuration
+If you are using a third party DNS make sure you create 2 records, the main A record that points to your website to host your frontend (not included in this repo) and a A record that hosts this api. both records point to the same IP adress but the api endpoints DNS needs to be a api.YOUR.DOMAIN subdomain.  
+This setup is needed to make nginx serve a different root.
+
 
 
