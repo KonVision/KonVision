@@ -48,28 +48,29 @@ node index.js
 ## Server side Setup and Troubleshooting
 
 ### Disclaimer
-This code has been designed and written to run un a Ubuntu Server (Ubuntu server LTS 20.04.4). To avoid unneccesary bugs, do not attempt to set this up on a windows server or home pc because the chances are high, that it will not work.
-
-### Backend
+This code has been designed and written to run on a Ubuntu Server (Ubuntu server LTS 20.04.4). To avoid unnecessary bugs, do not attempt to set this up on a windows server or home pc because the chances are high, that it will not work.
 
 ### Services needed  
 
 | Service  | Installation |
 | ------------- | ------------- |
-| nginx (or Apache2)  | sudo apt-get install nginx  |
-| php fpm  | sudo apt-get install php8.1-fpm  |
-| NodeJs  | sudo apt-get install node  |
-| npm  | sudo apt-get install npm  |
+| [nginx](https://nginx.org/) (or [Apache II](https://httpd.apache.org/))  | `sudo apt-get install nginx`  |
+| [php fpm](https://php-fpm.org/)  | `sudo apt-get install php8.1-fpm`  |
+| [Node.js](https://nodejs.org/)  | `sudo apt-get install node`  |
+| [npm](https://www.npmjs.com/)  | `sudo apt-get install npm`  |
 
 ### Uploading  
-After editing all neccessary config files, you can upload the code to your server.  
-You will need to create a directory called ```/var/www/api.YOUR.HOST/``` and place the file structure in it.   
+After editing all neccessary config files, you can upload the code to your server.
+
+You will need to create a directory called ```/var/www/api.YOUR.HOST/``` and place the file structure in it.
+
 You will need to create a directory called ```/var/www/YOUR.HOST/``` which will host your main homepage.  
 
 ### NGINX Configuration files
 
 After installing all neccesary services and after creating the 2 file paths, you can create the nginx config files which are located in ```/etc/nginx/sites-enabled```.  
-The first important config file is for the api. It is important to implement php here. Simply copy paste the below config file to ```/etc/nxing/sites-enabled/api.YOUR.DOMAIN.conf```  
+
+The first important config file is for the API. It is important to implement PHP here. Simply copy paste the below config file to ```/etc/nxing/sites-enabled/api.YOUR.DOMAIN.conf```.
 
 ```
 server {
@@ -84,14 +85,15 @@ server {
 }
 
 location ~ /\.ht {
-deny all;}
+    deny all;
+}
 
 #
 #MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
 #
 ```
 
-The second important config file is for the main website. Nothing is needed here apart from setting the document root and websocket. Simply copy paste the below config file to ```/etc/nxing/sites-enabled/YOUR.DOMAIN.conf```
+The second important config file is for the main website. Nothing is needed here apart from setting the document root and websocket. Simply copy paste the below config file to ```/etc/nxing/sites-enabled/YOUR.DOMAIN.conf```.
 
 ```
 server {
@@ -130,7 +132,7 @@ sudo nginx -t
 If you see all services are running and nginx -t doesnt have any error outputs you are good to go and can follow the rest of the installation.
 
 ### IP configuration
-If you are using a third party DNS make sure you create 2 records, the main A record that points to your website to host your frontend (not included in this repo) and a A record that hosts this api. both records point to the same IP adress but the api endpoints DNS needs to be a api.YOUR.DOMAIN subdomain.  
+If you are using a third party DNS make sure you create 2 records, the main A record that points to your website to host your frontend (not included in this repo) and a A record that hosts this API. both records point to the same IP adress but the API endpoints DNS needs to be a `api.YOUR.DOMAIN` subdomain.  
 This setup is needed to make nginx serve a different root depenging on your call.  
 
 If everyting is set up your dns should look something like this:  
@@ -147,3 +149,10 @@ screen sudo -u www-data node /var/www/api.YOUR.DOMAIN/index.js
 ```  
 
 Your API should be running now!
+
+
+## Other
+
+### License
+
+This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/KonVision/OpenBot/blob/main/LICENSE).
