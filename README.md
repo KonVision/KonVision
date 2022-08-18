@@ -119,7 +119,7 @@ If you are using a third party DNS make sure you create 2 records, the main A re
 This setup is needed to make nginx serve a different root depenging on your call.  
 
 If everyting is set up your dns should look something like this:
-![alt text]([http://url/to/img.png](https://api.flows.host/users/608611692955435009/a9449837b374d9b15067f320e91ebdc6/a9449837b374d9b15067f320e91ebdc6.png)
+![alt text](http://url/to/img.png](https://api.flows.host/users/608611692955435009/a9449837b374d9b15067f320e91ebdc6/a9449837b374d9b15067f320e91ebdc6.png)
 
 
 
