@@ -87,7 +87,7 @@ After installing all neccesary services and after creating the 2 file paths, you
 
     #
     #MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
-    #
+    #}
 ```
 
 ### IP configuration
