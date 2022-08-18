@@ -50,3 +50,5 @@ This code has been designed and written to run un a Ubuntu Server (Ubuntu server
 
 ### Backend
 
+After editing all neccessary config files, you can upload the code to your server.
+You will need to create a directory called ```/var/www/api.YOURHOST/```
