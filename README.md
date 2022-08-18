@@ -43,6 +43,8 @@ yarn install
 ```bash
 node index.js
 ```
+
+
 ## Server side Setup and Troubleshooting
 
 ### Disclaimer
@@ -71,47 +73,60 @@ The first important config file is for the api. It is important to implement php
 
 ```
 server {
-        root /var/www/api.YOUR.DOMAIN;  
-        index index.php;
-        server_name api.YOUR.DOMAIN;
-        location / { try_files $uri $uri/ /index.php?$query_string; }
+    root /var/www/api.YOUR.DOMAIN;  
+    index index.php;
+    server_name api.YOUR.DOMAIN;
+    location / { try_files $uri $uri/ /index.php?$query_string; }
 
-        location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+    location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+}
 
-    }
+location ~ /\.ht {
+deny all;}
 
-    location ~ /\.ht {
-    deny all;}
-
-    #
-    #MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
-    #
+#
+#MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
+#
 ```
 
 The second important config file is for the main website. Nothing is needed here apart from setting the document root and websocket. Simply copy paste the below config file to ```/etc/nxing/sites-enabled/YOUR.DOMAIN.conf```
 
 ```
 server {
-        root /var/www/YOUR.DOMAIN;  
-        index index.php;
-        server_name YOUR.DOMAIN;
-        location / { try_files $uri $uri/ /index.php?$query_string; }
-        location ~ /\.ht {
-         deny all;}
-    #
-    #MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
-    #
+    root /var/www/YOUR.DOMAIN;  
+    index index.php;
+    server_name YOUR.DOMAIN;
+    location / { try_files $uri $uri/ /index.php?$query_string; 
+}
+
+location ~ /\.ht {
+    deny all;
+}
+
+#
+#MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
+#
 ```
+
+
 ### Integrity checks
 
 Now simply run these commands to test if everything works:
-```
+
+```bash
 sudo systemctl status nginx
+```
+
+```bash
 sudo systemctl status php8.1-fpm
+```
+
+```bash
 sudo nginx -t 
 ```
+
 If you see all services are running and nginx -t doesnt have any error outputs you are good to go and can follow the rest of the installation.
 
 ### IP configuration
@@ -119,18 +134,16 @@ If you are using a third party DNS make sure you create 2 records, the main A re
 This setup is needed to make nginx serve a different root depenging on your call.  
 
 If everyting is set up your dns should look something like this:  
-![alt text](https://api.flows.host/users/608611692955435009/a9449837b374d9b15067f320e91ebdc6/a9449837b374d9b15067f320e91ebdc6.png)
+![DNS Management Example](https://imgur.com/rogmSEZ)
+
 
 ### Launching the router and discord bot.
 
 Now, the setup should be completed and you are good to launch the backend.  
-```
+
+```bash
 screen sudo -u www-data node /var/www/api.YOUR.DOMAIN/handler/handler.js
 screen sudo -u www-data node /var/www/api.YOUR.DOMAIN/index.js
 ```  
-GG now your api is running!
 
-
-
-
-
+Your API should be running now!

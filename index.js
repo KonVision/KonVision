@@ -71,7 +71,7 @@ client.on('messageCreate', msg => {
             const responseEmbed  = new MessageEmbed()
               .setColor(success)
               .setTitle("Embed Settings")
-              .setDescription(`You have been registered successfully! \n\nUse \`${prefix}configurate\` to configurate your upload settings and \`${prefix}getConfigs\` to get your config files.`)
+              .setDescription(`You have been registered successfully! \n\nUse \`${prefix}configure\` to configure your upload settings and \`${prefix}getConfigs\` to get your config files.`)
             msg.reply({ embeds: [ responseEmbed ] });
         } else {
             msg.reply("You are already registered!");
@@ -150,8 +150,8 @@ client.on('messageCreate', msg => {
   }
 
 
-  /* Configurate upload settings command */
-  if (msg.content.startsWith(prefix + "configurate")) {
+  /* configure upload settings command */
+  if (msg.content.startsWith(prefix + "configure")) {
     let name = msg.author.id;
     const folderPath = `./users/${name}`;
 
@@ -177,7 +177,7 @@ client.on('messageCreate', msg => {
 
         msg.reply({ content: '**Configuration:** \n\nDo you want to use embeds?', embeds: [ exampleEmbed ], components: [row] });
       } else {
-        msg.reply(`You already configurated your settings! \nUse \`${prefix}help\` to get a list of commands and how to change your settings using them.`);
+        msg.reply(`You already configured your settings! \nUse \`${prefix}help\` to get a list of commands and how to change your settings using them.`);
       }
 
     } else {
@@ -208,7 +208,7 @@ client.on('messageCreate', msg => {
         msg.reply({ embeds: [ responseEmbed ] });
       }
     } else {
-      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
+      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configure\` to configure your account and turn embeds on.`);
     }
   }
   
@@ -234,7 +234,7 @@ client.on('messageCreate', msg => {
         msg.reply({ embeds: [ responseEmbed ] });
       }
     } else {
-      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
+      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configure\` to configure your account and turn embeds on.`);
     }
   }
 
@@ -271,7 +271,7 @@ client.on('messageCreate', msg => {
         msg.reply(`You don't have embeds enabled. \nUse \`${prefix}embedsOn\` to turn them on.`);
       }
     } else {
-      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
+      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configure\` to configure your account and turn embeds on.`);
     }
   }
 
@@ -312,7 +312,7 @@ client.on('messageCreate', msg => {
         msg.reply(`You don't have embeds enabled. \nUse \`${prefix}embedsOn\` to turn them on.`);
       }
     } else {
-      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
+      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configure\` to configure your account and turn embeds on.`);
     }
   }
 
@@ -352,7 +352,7 @@ client.on('messageCreate', msg => {
         msg.reply(`You don't have embeds enabled. \nUse \`${prefix}embedsOn\` to turn them on.`);
       }
     } else {
-      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
+      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configure\` to configure your account and turn embeds on.`);
     }
   }
 
@@ -373,7 +373,7 @@ client.on('messageCreate', msg => {
         msg.reply(`You don't have embeds enabled. \nUse \`${prefix}embedsOn\` to turn them on.`);
       }
     } else {
-      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
+      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configure\` to configure your account and turn embeds on.`);
     }
   }
 
@@ -389,7 +389,7 @@ client.on('messageCreate', msg => {
         .setAuthor( { name: userConfig.author.name, iconURL: msg.author.displayAvatarURL() } )
       msg.reply({ content: "This is your current embed:", embeds: [ previewEmbed ] });
     } else {
-      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configurate\` to configurate your account and turn embeds on.`);
+      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configure\` to configure your account and turn embeds on.`);
     }
   }
 
@@ -445,9 +445,9 @@ client.on('messageCreate', msg => {
     const configurationCommands = new MessageEmbed()
       .setColor(info)
       .setTitle('Configuration Commands')
-      .setDescription('Commands to configurate your image settings (embed configuration etc.).')
+      .setDescription('Commands to configure your image settings (embed configuration etc.).')
       .addFields(
-        { name: `${prefix}configurate`, value: 'Configurate your account. Only works if you are registered.', inline: true},
+        { name: `${prefix}configure`, value: 'configure your account. Only works if you are registered.', inline: true},
         { name: `${prefix}embedsOn`, value: 'Turns on embeds.', inline: true },
         { name: `${prefix}embedsOff`, value: 'Turns off embeds.', inline: true },
         { name: `${prefix}setTitle \`<Title>\``, value: 'Sets your embed title. Only works if you have embeds enabled.', inline: true },
