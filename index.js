@@ -56,7 +56,7 @@ client.on('messageCreate', msg => {
                     return console.error(err);
                 }
             }));
-            fs.writeFileSync(path.join(__dirname, writeFilePath), content, err => {
+            fs.writeFile(path.join(__dirname, writeFilePath), content, err => {
                 if (err) {
                     console.error(err);
                     return;
