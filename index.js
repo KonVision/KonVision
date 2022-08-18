@@ -447,7 +447,7 @@ client.on('messageCreate', msg => {
       .setTitle('Configuration Commands')
       .setDescription('Commands to configure your image settings (embed configuration etc.).')
       .addFields(
-        { name: `${prefix}configure`, value: 'configure your account. Only works if you are registered.', inline: true},
+        { name: `${prefix}configure`, value: 'Configure your account. Only works if you are registered.', inline: true},
         { name: `${prefix}embedsOn`, value: 'Turns on embeds.', inline: true },
         { name: `${prefix}embedsOff`, value: 'Turns off embeds.', inline: true },
         { name: `${prefix}setTitle \`<Title>\``, value: 'Sets your embed title. Only works if you have embeds enabled.', inline: true },
