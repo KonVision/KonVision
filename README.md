@@ -1,4 +1,4 @@
-# Open Bot
+# KonVision - Image Host Bot
 
 ## Setup & Installation
 
