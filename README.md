@@ -104,10 +104,24 @@ server {
     #MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
     #
 ```
+### Integrity checks
+
+Now simply run these commands to test if everything works:
+```
+sudo systemctl status nginx
+sudo systemctl status php8.1-fpm
+sudo nginx -t 
+```
+If you see all services are running and nginx -t doesnt have any error outputs you are good to go and can follow the rest of the installation.
 
 ### IP configuration
 If you are using a third party DNS make sure you create 2 records, the main A record that points to your website to host your frontend (not included in this repo) and a A record that hosts this api. both records point to the same IP adress but the api endpoints DNS needs to be a api.YOUR.DOMAIN subdomain.  
-This setup is needed to make nginx serve a different root.
+This setup is needed to make nginx serve a different root depenging on your call.  
+
+If everyting is set up your dns should look something like this:
+(https://api.flows.host/users/608611692955435009/a9449837b374d9b15067f320e91ebdc6/a9449837b374d9b15067f320e91ebdc6.png)
+
+
 
 
 
