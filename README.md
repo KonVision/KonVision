@@ -1,4 +1,4 @@
-# bot
+# OpenBot
 
 ## Setup & Installation
 
