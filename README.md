@@ -55,7 +55,7 @@ This code has been designed and written to run un a Ubuntu Server (Ubuntu server
 | Service  | Installation |
 | ------------- | ------------- |
 | nginx (or Apache2)  | sudo apt-get install nginx  |
-| php fpm  | sudo apt-get install php8.0-fpm  |
+| php fpm  | sudo apt-get install php8.1-fpm  |
 | NodeJs  | sudo apt-get install node  |
 | npm  | sudo apt-get install npm  |
 
@@ -67,12 +67,13 @@ You will need to create a directory called ```/var/www/YOUR.HOST/``` which will 
 ### NGINX Configuration files
 
 After installing all neccesary services and after creating the 2 file paths, you can create the nginx config files which are located in ```/etc/nginx/sites-enabled```.  
+The first important config file is for the api. It is important to implement php here. Simply copy paste the below config file to ```/etc/nxing/sites-enabled/api.YOUR.DOMAIN.conf```  
 
 ```
 server {
         root /var/www/api.YOUR.DOMAIN;  
         index index.php;
-        server_name api.flows.host;
+        server_name api.YOUR.DOMAIN;
         location / { try_files $uri $uri/ /index.php?$query_string; }
 
         location ~ \.php$ {
@@ -84,6 +85,21 @@ server {
     location ~ /\.ht {
     deny all;}
 
+    #
+    #MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
+    #
+```
+
+The second important config file is for the main website. Nothing is needed here apart from setting the document root and websocket. Simply copy paste the below config file to ```/etc/nxing/sites-enabled/YOUR.DOMAIN.conf```
+
+```
+server {
+        root /var/www/YOUR.DOMAIN;  
+        index index.php;
+        server_name YOUR.DOMAIN;
+        location / { try_files $uri $uri/ /index.php?$query_string; }
+        location ~ /\.ht {
+         deny all;}
     #
     #MAKE SURE YOU SET UP SSL IN THIS CONFIG FILE USING CERTBOT!
     #
