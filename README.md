@@ -50,14 +50,16 @@ This code has been designed and written to run un a Ubuntu Server (Ubuntu server
 
 ### Backend
 
-1: Services needed  
+### Services needed  
 
 | Service  | Installation |
 | ------------- | ------------- |
 | nginx (or Apache2)  | sudo apt-get install nginx  |
 | php fpm  | sudo apt-get install php8.0-fpm  |
- 
+| NodeJs  | sudo apt-get install node  |
+| npm  | sudo apt-get install npm  |
 
+### Uploading  
 After editing all neccessary config files, you can upload the code to your server.  
 You will need to create a directory called ```/var/www/api.YOURHOST/``` and place the file structure in it.  
 
