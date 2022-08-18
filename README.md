@@ -118,8 +118,17 @@ If you see all services are running and nginx -t doesnt have any error outputs y
 If you are using a third party DNS make sure you create 2 records, the main A record that points to your website to host your frontend (not included in this repo) and a A record that hosts this api. both records point to the same IP adress but the api endpoints DNS needs to be a api.YOUR.DOMAIN subdomain.  
 This setup is needed to make nginx serve a different root depenging on your call.  
 
-If everyting is set up your dns should look something like this:
+If everyting is set up your dns should look something like this:  
 ![alt text](https://api.flows.host/users/608611692955435009/a9449837b374d9b15067f320e91ebdc6/a9449837b374d9b15067f320e91ebdc6.png)
+
+### Launching the router and discord bot.
+
+Now, the setup should be completed and you are good to launch the backend.  
+```
+screen sudo -u www-data node /var/www/api.YOUR.DOMAIN/handler/handler.js
+screen sudo -u www-data node /var/www/api.YOUR.DOMAIN/index.js
+```  
+GG now your api is running!
 
 
 
