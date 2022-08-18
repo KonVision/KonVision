@@ -45,12 +45,12 @@ node index.js
 ```
 
 
-## Server side Setup and Troubleshooting
+## Server-side Setup & Troubleshooting
 
 ### Disclaimer
 This code has been designed and written to run on a Ubuntu Server (Ubuntu server LTS 20.04.4). To avoid unnecessary bugs, do not attempt to set this up on a windows server or home pc because the chances are high, that it will not work.
 
-### Services needed  
+### Services required  
 
 | Service  | Installation |
 | ------------- | ------------- |
@@ -129,7 +129,7 @@ sudo systemctl status php8.1-fpm
 sudo nginx -t 
 ```
 
-If you see all services are running and nginx -t doesnt have any error outputs you are good to go and can follow the rest of the installation.
+If you see all services are running and `nginx -t` doesn't have any error outputs you are good to go and can follow the rest of the installation.
 
 ### IP configuration
 If you are using a third party DNS make sure you create 2 records, the main A record that points to your website to host your frontend (not included in this repo) and a A record that hosts this API. both records point to the same IP adress but the API endpoints DNS needs to be a `api.YOUR.DOMAIN` subdomain.  
