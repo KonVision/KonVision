@@ -150,7 +150,7 @@ client.on('messageCreate', msg => {
   }
 
 
-  /* configure upload settings command */
+  /* Configure upload settings command */
   if (msg.content.startsWith(prefix + "configure")) {
     let name = msg.author.id;
     const folderPath = `./users/${name}`;
@@ -245,7 +245,7 @@ client.on('messageCreate', msg => {
       const userConfig = JSON.parse(fs.readFileSync(userConfigPath));
       if (userConfig.embed) {
         const messageContent = msg.content;
-        const commandLength = prefix.length + "setTitle".length + 1;
+        const commandLength = prefix.length + "settitle".length + 1;
         if (messageContent.slice(commandLength).length < 60) {
           if (!messageContent.slice(commandLength) == " ") {
             userConfig.title = messageContent.slice(commandLength);
@@ -282,7 +282,7 @@ client.on('messageCreate', msg => {
       const userConfig = JSON.parse(fs.readFileSync(userConfigPath));
       if (userConfig.embed) {
         const messageContent = msg.content;
-        const commandLength = prefix.length + "setDescription".length + 1;
+        const commandLength = prefix.length + "setdescription".length + 1;
         if (messageContent.slice(commandLength).length < 200) {
           if (!messageContent.slice(commandLength) == " ") {
             userConfig.description = messageContent.slice(commandLength);
@@ -393,6 +393,46 @@ client.on('messageCreate', msg => {
     }
   }
 
+  /* Set domain command */
+  if (msg.content.startsWith(prefix + "setDomain") || msg.content.startsWith(prefix + "setdomain")) {
+    const userConfigPath = `./users/${msg.author.id}/config.json`;
+    if (fs.existsSync(path.join(__dirname, userConfigPath))) {
+      const userConfig = JSON.parse(fs.readFileSync(userConfigPath));
+      const messageContent = msg.content;
+      const commandLength = prefix.length + "setdomain".length + 1;
+      if (!messageContent.slice(commandLength).length < 100) {
+        if (!messageContent.slice(commandLength) == " ") {
+          userConfig.domain = messageContent.slice(commandLength);
+          if (!userConfig.domain.startsWith("http")) {
+            userConfig.domain = `https://${userConfig.domain}`
+          }
+          fs.rmSync(path.join(__dirname, `./users/${msg.author.id}/config.json`), { recursive: true, force: true });
+          fs.writeFileSync(path.join(__dirname, `./users/${msg.author.id}/config.json`), JSON.stringify(userConfig));
+
+          const responseEmbed  = new MessageEmbed()
+            .setColor(success)
+            .setTitle("Domain Settings")
+            .setDescription(`Your domain has been set to: \n\n\`${userConfig.domain}\` \n\n If you want to disable your spoofed domain, use \`${prefix}domain\` without any further details.`)
+          msg.reply({ embeds: [ responseEmbed ] });
+        } else {
+          userConfig.domain = messageContent.slice(commandLength);
+          fs.rmSync(path.join(__dirname, `./users/${msg.author.id}/config.json`), { recursive: true, force: true });
+          fs.writeFileSync(path.join(__dirname, `./users/${msg.author.id}/config.json`), JSON.stringify(userConfig));
+
+          const responseEmbed  = new MessageEmbed()
+            .setColor(success)
+            .setTitle("Domain Settings")
+            .setDescription(`Your domain settings have been resetted.`)
+          msg.reply({ embeds: [ responseEmbed ] });
+        }
+      } else {
+        msg.reply(`Your spoofed domain is too long. \nIt must be less than 100 characters.`);
+      }
+    } else {
+      msg.reply(`You don't have a valid account linked to your Discord profile or need to use \`${prefix}configure\` to configure your account and turn embeds on.`);
+    }
+  }
+
   /* Get configs command */
   if (msg.content.startsWith(prefix + "getConfigs") || msg.content.startsWith(prefix + "getconfigs") || msg.content.startsWith(prefix + "getConfig") || msg.content.startsWith(prefix + "getconfig")) {
     let name = msg.author.id;
@@ -450,6 +490,7 @@ client.on('messageCreate', msg => {
         { name: `${prefix}configure`, value: 'Configure your account. Only works if you are registered.', inline: true},
         { name: `${prefix}embedsOn`, value: 'Turns on embeds.', inline: true },
         { name: `${prefix}embedsOff`, value: 'Turns off embeds.', inline: true },
+        { name: `${prefix}setDomain`, value: 'Sets your (spoofed) domain.', inline: true },
         { name: `${prefix}setTitle \`<Title>\``, value: 'Sets your embed title. Only works if you have embeds enabled.', inline: true },
         { name: `${prefix}setDescription \`<Description>\``, value: 'Sets your embed description. Only works if you have embeds enabled.', inline: true },
         { name: `${prefix}setAuthor \`<Author Text>\``, value: 'Sets your author text. Only works if you have embeds enabled.', inline: true },
@@ -476,6 +517,7 @@ client.on('interactionCreate', async interaction => {
 
     const config = {
       "embed": true,
+      "domain": "",
       "title": "",
       "description": "",
       "author": ""
@@ -498,6 +540,7 @@ client.on('interactionCreate', async interaction => {
 
     const config = {
       "embed": true,
+      "domain": "",
       "title": "",
       "description": "",
       "author": ""
