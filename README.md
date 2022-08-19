@@ -159,7 +159,7 @@ If you are using a third party DNS, make sure you create 2 records, the main A r
 This setup is needed to make nginx serve a different root depending on your call.  
 
 If everything is set up, your DNS should look something like this:  
-![DNS Management Example](https://imgur.com/rogmSEZ)
+![DNS Management Example](https://i.imgur.com/rogmSEZ.png)
 
 
 ### Launching the router and discord bot.
