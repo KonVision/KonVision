@@ -76,7 +76,7 @@ This code has been designed and written to run on an Ubuntu Server (Ubuntu serve
 ### Services required  
 
 | Service  | Installation |
-| ------------- | ------------- |
+| :------: | :----------: |
 | [nginx](https://nginx.org/) (or [Apache II](https://httpd.apache.org/))  | `sudo apt-get install nginx`  |
 | [php fpm](https://php-fpm.org/)  | `sudo apt-get install php8.1-fpm`  |
 | [Node.js](https://nodejs.org/)  | `sudo apt-get install node`  |
