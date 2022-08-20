@@ -168,7 +168,7 @@ client.on('messageCreate', msg => {
               .setLabel('No')
               .setStyle('SECONDARY')
           );
-
+/* Fishstigg easter egg here */
         const exampleEmbed = new MessageEmbed()
           .setTitle('Embeds look like this!')
           .setDescription('And can have a description!')
