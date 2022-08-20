@@ -70,7 +70,7 @@ client.on('messageCreate', msg => {
 
             const responseEmbed  = new MessageEmbed()
               .setColor(success)
-              .setTitle("Embed Settings")
+              .setTitle("Registration successful!")
               .setDescription(`You have been registered successfully! \n\nUse \`${prefix}configure\` to configure your upload settings and \`${prefix}getConfigs\` to get your config files.`)
             msg.reply({ embeds: [ responseEmbed ] });
         } else {
