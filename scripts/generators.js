@@ -32,7 +32,7 @@ function generatePHP(key) {
                                     $md5 = md5_file(getcwd() . "/" . basename($_FILES['d']['name']));
                                     $explode = explode(".", $_FILES["d"]["name"]);
                                     rename(getcwd() . "/" . basename($_FILES['d']['name']), "/var/www/${domain}/upload/end/" . $_POST['n'] . "." . $md5 . "." . end($explode));
-                                    if (!$json['domain']) {
+                                    if (isset($json['domain']) && $json['domain'] !== '') {
                                         if ($json['embed']) {
                                             echo $uploadhost . "/users/" . $_POST['n'] . '/' . $md5 . "/" . $md5 . '.html';
                                         } else {
