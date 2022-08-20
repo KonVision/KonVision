@@ -168,7 +168,7 @@ If everything is set up, your DNS should look something like this:
 
 ### Network configuration
 
-Make sure to foreward port 443 if you are running ssl on your domain or port 80 for ipv6 AND v4 to the local ip of your server / cluster to make the server accessible from the outside world. 
+Make sure to forward port `443` if you are running SSL on your domain or port `80` for ipv6 AND v4 to the local IP of your server / cluster to make the server accessible from the outside world. 
 
 ### Launching the router and discord bot.
 
