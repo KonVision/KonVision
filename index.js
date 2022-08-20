@@ -437,26 +437,32 @@ client.on('messageCreate', msg => {
   if (msg.content.startsWith(prefix + "getConfigs") || msg.content.startsWith(prefix + "getconfigs") || msg.content.startsWith(prefix + "getConfig") || msg.content.startsWith(prefix + "getconfig")) {
     let name = msg.author.id;
     const folderPath = `./users/${name}`;
+    const configPath = `./users/${name}/config.json`
 
     if (fs.existsSync(path.join(__dirname, folderPath))) {
+      if (!(fs.existsSync(path.join(__dirname, configPath)))) {
       
-      const row = new MessageActionRow()
-        .addComponents(
-          new MessageButton()
-            .setCustomId('ShareX')
-            .setLabel('ShareX')
-            .setStyle('PRIMARY'),
-          new MessageButton()
-            .setCustomId('ShareNix')
-            .setLabel('ShareNix')
-            .setStyle('PRIMARY')
-        );
+        const row = new MessageActionRow()
+          .addComponents(
+            new MessageButton()
+              .setCustomId('ShareX')
+              .setLabel('ShareX')
+              .setStyle('PRIMARY'),
+            new MessageButton()
+              .setCustomId('ShareNix')
+              .setLabel('ShareNix')
+              .setStyle('PRIMARY')
+          );
 
-      const configEmbed = new MessageEmbed()
-        .setTitle('Get Configs')
-        .setDescription('For what program do you want the config file? \n([ShareX](https://getsharex.com) or [ShareNix](https://github.com/Francesco149/sharenix))')
+        const configEmbed = new MessageEmbed()
+          .setTitle('Get Configs')
+          .setDescription('For what program do you want the config file? \n([ShareX](https://getsharex.com) or [ShareNix](https://github.com/Francesco149/sharenix))')
 
-      msg.reply({ embeds: [ configEmbed ], components: [ row ] });
+        msg.reply({ embeds: [ configEmbed ], components: [ row ] });
+
+      } else {
+        msg.reply(`Please configure your upload preferences using \`${prefix}configure\` before requesting config files!`)
+      }
     } else {
       msg.reply("You don't have a valid account linked to your Discord profile.")
     }
