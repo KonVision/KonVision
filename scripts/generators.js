@@ -19,7 +19,7 @@ function generatePHP(key) {
                         ini_set('display_startup_errors', 1);
                         error_reporting(E_ALL);
                         header("Content-Type: text/text");
-                        $str = file_get_contents ('./config.json');
+                        $str = file_get_contents('./config.json');
                         $json = json_decode($str, true);
                         $key = "${key}";
                         $uploadhost = "https://${domain}/";
