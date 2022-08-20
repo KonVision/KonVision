@@ -100,9 +100,10 @@ server {
     root /var/www/api.YOUR.DOMAIN;  
     index index.php;
     server_name api.YOUR.DOMAIN;
-    location / { try_files $uri $uri/ /index.php?$query_string; }
+    location / { try_files $uri $uri/ /index.php?$query_string; 
+}
 
-    location ~ \.php$ {
+location ~ \.php$ {
     include snippets/fastcgi-php.conf;
     fastcgi_pass unix:/run/php/php8.1-fpm.sock;
 }
