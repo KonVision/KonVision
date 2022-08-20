@@ -412,7 +412,7 @@ client.on('messageCreate', msg => {
           const responseEmbed  = new MessageEmbed()
             .setColor(success)
             .setTitle("Domain Settings")
-            .setDescription(`Your domain has been set to: \n\n\`${userConfig.domain}\` \n\n If you want to disable your spoofed domain, use \`${prefix}domain\` without any further details.`)
+            .setDescription(`Your domain has been set to: \n\n\`${userConfig.domain}\` \n\n If you want to disable your spoofed domain, use \`${prefix}setDomain\` without any further details.`)
           msg.reply({ embeds: [ responseEmbed ] });
         } else {
           userConfig.domain = messageContent.slice(commandLength);
