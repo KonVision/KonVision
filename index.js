@@ -255,7 +255,7 @@ client.on('messageCreate', msg => {
             const responseEmbed  = new MessageEmbed()
               .setColor(success)
               .setTitle("Title Settings")
-              .setDescription(`Your title has been set to: \n\n\`${userConfig.title}\` \n\nUse \`${prefix}setDescription\` to add/change your description. \n Use \`${prefix}setAuthor\` to add an author.`)
+              .setDescription(`Your title has been set to: \n\n\`${userConfig.title}\` \n\nUse \`${prefix}setDescription\` to add/change your description. \nUse \`${prefix}setAuthor\` to add an author.`)
             msg.reply({ embeds: [ responseEmbed ] });
           } else {
             const responseEmbed  = new MessageEmbed()
@@ -336,7 +336,7 @@ client.on('messageCreate', msg => {
             const responseEmbed  = new MessageEmbed()
               .setColor(success)
               .setTitle("Author Settings")
-              .setDescription(`Your author text has been set to: \n\n\`${userConfig.author.name}\` \n\n If you want to disable author, use \`${prefix}authorOff\`.`)
+              .setDescription(`Your author text has been set to: \n\n\`${userConfig.author.name}\` \n\nIf you want to disable author, use \`${prefix}authorOff\`.`)
             msg.reply({ embeds: [ responseEmbed ] });
           } else {
             const responseEmbed  = new MessageEmbed()
@@ -412,7 +412,7 @@ client.on('messageCreate', msg => {
           const responseEmbed  = new MessageEmbed()
             .setColor(success)
             .setTitle("Domain Settings")
-            .setDescription(`Your domain has been set to: \n\n\`${userConfig.domain}\` \n\n If you want to disable your spoofed domain, use \`${prefix}setDomain\` without any further details.`)
+            .setDescription(`Your domain has been set to: \n\n\`${userConfig.domain}\` \n\nIf you want to disable your spoofed domain, use \`${prefix}setDomain\` without any further details.`)
           msg.reply({ embeds: [ responseEmbed ] });
         } else {
           userConfig.domain = messageContent.slice(commandLength);
