@@ -140,7 +140,7 @@ client.on('messageCreate', msg => {
   
       const responseEmbed  = new MessageEmbed()
         .setColor(warning)
-        .setTitle("Title Settings")
+        .setTitle("Wipe successful!")
         .setDescription(`All your images and database entries have been deleted.`)
       msg.reply({ embeds: [ responseEmbed ] });
     }
