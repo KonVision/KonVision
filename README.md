@@ -107,6 +107,11 @@ server {
     fastcgi_pass unix:/run/php/php8.1-fpm.sock;
 }
 
+location ~ /(db|handler|cfg|scripts|node_modules) {
+   deny all;
+   return 404;
+}
+
 location ~ /\.ht {
     deny all;
 }
