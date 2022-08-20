@@ -108,7 +108,7 @@ location ~ \.php$ {
     fastcgi_pass unix:/run/php/php8.1-fpm.sock;
 }
 
-location ~ /(db|handler|cfg|scripts|node_modules) {
+location ~ /(db|handler|cfg|scripts|node_modules|config.json) {
    deny all;
    return 404;
 }
