@@ -161,6 +161,9 @@ This setup is needed to make nginx serve a different root depending on your call
 If everything is set up, your DNS should look something like this:  
 ![DNS Management Example](https://i.imgur.com/rogmSEZ.png)
 
+### Network configuration
+
+Make sure to foreward port 443 if you are running ssl on your domain or port 80 for ipv6 AND v4 to the local ip of your server / cluster to make the server accessible from the outside world. 
 
 ### Launching the router and discord bot.
 
