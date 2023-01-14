@@ -8,7 +8,7 @@ const api = require('./scripts/api');
 const gen = require('./scripts/generators');
 const cfggen = require('./scripts/configGenerators');
 
-
+//i was here!!! 
 
 const client = new Client({
   intents: [
